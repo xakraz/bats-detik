@@ -1,3 +1,5 @@
+
+
 # DETIK: DevOps e2e Testing in Kubernetes
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/bats-core/bats-detik/blob/master/LICENSE)
 ![Build status](https://github.com/bats-core/bats-detik/actions/workflows/test.yml/badge.svg)
@@ -11,25 +13,31 @@ This kind of test is the ultimate set of verifications to run for a project, lon
 
 ## Table of Contents
 
-* [Objectives](#objectives)
-* [Examples](#examples)
-  * [Test files and result](#test-files-and-result)
-  * [Working with Kubectl or OC commands](#working-with-kubectl-or-oc-commands)
-  * [Other Examples](#other-examples)
-* [Usage](#usage)
-  * [Setup](#setup)
-  * [Executing tests by hand](#executing-tests-by-hand)
-  * [Continuous Integration](#continuous-integration)
-* [Syntax Reference](#syntax-reference)
-  * [Counting Resources](#counting-resources)
-  * [Verifying Property Values](#verifying-property-values)
-  * [Property Names](#property-names)
-* [Errors](#errors)
-  * [Error Codes](#error-codes)
-  * [Debugging Tests](#debugging-tests)
-  * [Linting](#linting)
-  * [Tips](#tips)
-* [Beyond K8s assertions](#beyond-k8s-assertions)
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<!-- param::isNotitle::true:: -->
+
+- [Objectives](#objectives)
+- [Examples](#examples)
+  - [Test files and result](#test-files-and-result)
+  - [Working with Kubectl or OC commands](#working-with-kubectl-or-oc-commands)
+  - [Other Examples](#other-examples)
+- [Usage](#usage)
+  - [Manual Setup](#manual-setup)
+  - [Docker Setup](#docker-setup)
+  - [Continuous Integration](#continuous-integration)
+- [Syntax Reference](#syntax-reference)
+  - [Counting Resources](#counting-resources)
+  - [Verifying Property Values](#verifying-property-values)
+  - [Property Names](#property-names)
+- [Errors](#errors)
+  - [Error Codes](#error-codes)
+  - [Debugging Tests](#debugging-tests)
+  - [Linting](#linting)
+  - [Tips](#tips)
+- [Beyond K8s assertions](#beyond-k8s-assertions)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
 ## Objectives
@@ -123,7 +131,7 @@ Since this project works with BATS, you can use **setup** and **teardown**
 functions to prepare and clean after every test in a file.
 
 
-## Working with Kubectl or OC commands
+### Working with Kubectl or OC commands
 
 If you are working with a native Kubernetes cluster.
 
@@ -177,7 +185,7 @@ verify "there are 2 pods named 'nginx'"
 ```
 
 
-## Other Examples
+### Other Examples
 
 Examples are available under [the eponym directory](examples/ci).  
 It includes...
