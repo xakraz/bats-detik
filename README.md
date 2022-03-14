@@ -278,11 +278,16 @@ verify "there are <number> <resource-type> named '<regular-expression>'"
 *resource-type* is one of the K8s ones (e.g. `pods`, `po`, `services`, `svc`...).  
 See [https://kubernetes.io/docs/reference/kubectl/overview/#resource-types](https://kubernetes.io/docs/reference/kubectl/overview/#resource-types) for a complete reference.
 
-This simple assertion may fail sometimes.  
-As an example, if you count the number of PODs, run your test and then kill the POD, they will still
-be listed, with the TERMINATING state. So, most of the time, you will want to verify the number of instances
+
+> :warning: This simple assertion may fail sometimes.
+>
+> As an example, if you count the number of PODs, run your test and then kill the POD, they will still
+be listed, with the `TERMINATING` state.
+>
+> So, most of the time, you will want to verify the number of instances
 with a given property value. Example: count the number of PODs with a given name pattern and having the `started` status.
-Hence this additional syntax.
+
+Hence this additional syntax (Using [next section](#verifying-property-values) documentation to verify additionnal properties):
 
 ```bash
 # Expecting a given number of instances
@@ -291,13 +296,13 @@ try "at most <number> times every <number>s \
 	with '<property-name>' being '<expected-value>'"
 ```
 
-This is a checking loop.  
+:pushpin: This assertion is useful for PODs, whose life cycle changes take time.  
+For services, you may directly use the simple count assertions.
+
+This is a checking loop.
 It breaks the loop if as soon as the assertion is verified. If it reaches the end of the loop
 without having been verified, an error is thrown. Please, refer to [this section](#property-names) for details
 about the property names.
-
-This assertion is useful for PODs, whose life cycle changes take time.  
-For services, you may directly use the simple count assertions.
 
 
 ### Verifying Property Values
@@ -321,13 +326,13 @@ It breaks the loop if as soon as the assertion is verified. If it reaches the en
 without having been verified, an error is thrown. Please, refer to [this section](#property-names) for details
 about the property names.
 
-This assertion verifies all the instances have this property value.
-But unlike the assertion type to count resources, you do not verify how many instances have this value. Notice however that **if it finds 0 item verifying the property, the assertion fails**.
+:memo: This assertion verifies _all the instances_ have this property value.
+But unlike the assertion type to [count resources](#counting-resources), you do not verify _how many instances_ have this value. Notice however that **if it finds 0 item verifying the property, the assertion fails**.
 
 
 ### Property Names
 
-In all assertions, *property-name* if one of the column names supported by K8s.  
+In all assertions, *property-name* is one of the column names supported by K8s.  
 See https://kubernetes.io/docs/reference/kubectl/overview/#custom-columns  
 You can also find column names by using `kubectl get <resource-type> -o custom-columns=ALL:*`.
 
